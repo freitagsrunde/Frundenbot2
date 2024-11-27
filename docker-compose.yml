@@ -1,0 +1,5 @@
+services:
+  frundenbot:
+    build: .
+    env_file: .frundenbot.env
+
