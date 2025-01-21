@@ -120,13 +120,20 @@ manager.isOpen().then((_) => {
         }
     });
 
-    bot.on('message', (msg) => {
+    bot.onText(/^\/help$/, async (msg) => {
         const chatId = msg.chat.id;
-        const commands = ["/open", "/notify", "/notify_closed"];
+        bot.sendMessage(chatId, HELP_MASSAGE);
+    });
+
+    bot.on('message', async (msg) => {
+        const chatId = msg.chat.id;
+        const commands = ["/open", "/notify", "/notify_closed", "/help"];
         if(commands.includes(msg.text)){
             return;
         }
-        bot.sendMessage(chatId, HELP_MASSAGE);
+        const isOpen = await manager.isOpen();
+        const resp = isOpen ? OPEN_MESSAGE : CLOSED_MESSAGE;
+        bot.sendMessage(chatId, resp);
     });
 });
 
