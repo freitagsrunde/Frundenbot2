@@ -91,7 +91,7 @@ manager.isOpen().then((_) => {
     bot.onText(/^\/notify$/, async (msg) => {
         const chatId = msg.chat.id;
         if(await manager.isOpen()){
-            bot.sendMessage(chatId, OPEN_MESSAGE + "\nFalls du benachrichtigt werden willst, wenn wir wieder zu machen, verwende /notify_clsoed.");
+            bot.sendMessage(chatId, OPEN_MESSAGE + "\nFalls du benachrichtigt werden willst, wenn wir wieder zu machen, verwende /notify_closed.");
         } else {
             bot.sendMessage(chatId, NOTIFY_OPEN_MESSAGE);
             manager.addSubscriber((self, isOpen) => {
