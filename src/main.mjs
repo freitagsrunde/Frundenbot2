@@ -41,7 +41,7 @@ class IsOpenManager {
         } else if (status === "CLOSED\n") {
             this._isOpen = false;
         } else {
-            throw Error(`Unkown status: ${status}`);
+            console.log(`[-] Unkown status: ${status}`);
         }
 
         if(this._isOpen != prevState){
